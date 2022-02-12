@@ -1,0 +1,60 @@
+There are 3 type of expression 
+1.Infix (operand+operator+operand)
+2.Postfix (operand+operand+operator)
+3.Prefix (operator+operand+operand)
+
+Conversions (Application of stack)
+
+1. Infix to Postfix --> 
+
+Traverse Infix expression from left to right
+case1--> if operand is found then push the caracter into the postfix string.
+case2--> if operator is found -->
+case2a--> if the stack is empty the push the operator into the stack.
+case2b--> if the stack is not empty but the precedence of the operator is
+          more than the precedence of the top element of the stack then push
+          the operator into the stack.
+case2c--> if the stack is not empty but the precedence of the operator is
+          less than or equal to the precedence of the top element of the stack
+          then pop the operators from the stack until the precedence of the top 
+          element of the stack is less than the precedence of the operator or 
+          stack not became empty and push the popped operators into the postfix string and at the last push the operator into the stack.
+case3--> if we Traverse the whole Infix string and at the last if the stack is not empty
+         then pop the element from the stack until stack not became empty and push the
+         element into the postfix string.
+
+
+2. Infix to Prefix -->
+
+step1--> Reverse the whole infix string
+
+step2--> Apply the whole procedure of the Conversion of infix to postfix with 2 changes
+1--> only in case of '^' operator pop the element from the stack until the precedence of
+      operator is less than or equal to the top element of the stack.
+2--> else pop the element from the stack until the precedence of operator is less than
+     the top element of the stack.
+step3--> our final Prefix string is Reverse of the string we got from the above operations.
+
+3. Postfix to Prefix -->
+
+Traverse the whole postfix string from left to right.
+
+case1--> if the operand is found push into the stack.
+case2--> if the operand is found :--
+    pop two element from the stack i.e operand1 is top element and operand2 is next to top 
+    then concate the string like (operator+operand2+operand1) and push the string into the 
+    stack.
+
+The final only string we get from the stack is our prefix string.
+
+4. Prefix to Postfix -->
+
+Traverse the whole prefix string from right to left.
+
+case1--> if the operand is found push into the stack.
+case2--> if the operand is found :--
+    pop two element from the stack i.e operand1 is top element and operand2 is next to top 
+    then concate the string like (operand1+operand2+operator) and push the string into the 
+    stack.
+
+The final only string we get from the stack is our prefix string.   
